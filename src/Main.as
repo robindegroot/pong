@@ -1,4 +1,4 @@
-package
+﻿package
 {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -47,6 +47,7 @@ package
 			
 			
 		}		
+		
 	
 		private function onGameOver(e:Event):void 
 		{

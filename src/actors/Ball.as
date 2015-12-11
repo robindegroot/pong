@@ -1,4 +1,4 @@
-package actors 
+﻿package actors 
 {
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -13,6 +13,7 @@ package actors
 	 */
 	public class Ball extends MovieClip 
 	{
+		public var speed:Number = 10;
 		private var _movement:Point;
 		public static const OUTSIDE_RIGHT:String = "outside right";
 		public static const OUTSIDE_LEFT:String = "outside left";
@@ -53,14 +54,21 @@ package actors
 			t.start();
 		}
 		
+		public function speedAngle():void
+		{
+			_movement = MovementCalculator.calculateMovement(10+ Math.random() * 15, Math.random() * 360);
+		}
 		private function restart(e:TimerEvent):void 
 		{
-			_movement = MovementCalculator.calculateMovement(15 + Math.random() * 10, Math.random() * 360);
+			speedAngle();
+			
 			if (_movement.x > 0 && _movement.x < 2) _movement.x += 2;
 			if (_movement.x < 0 && _movement.x > -2) _movement.x -= 2;
 		}
 		private function loop(e:Event):void 
+		
 		{
+			
 			this.x += _movement.x;
 			this.y += _movement.y;
 			
